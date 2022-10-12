@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Tasbih Counter</string>
+    <string name="tasbih_count_list">Tasbih Count List</string>
+    <string name="no_tasbih_yet_nplease_add_new_tasbih_nby_pressing_the_plus_button">No Tasbih Yet!\n\nPlease add new tasbih\nby pressing the plus button.</string>
+</resources>
