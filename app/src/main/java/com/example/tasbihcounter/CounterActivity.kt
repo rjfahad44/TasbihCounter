@@ -3,6 +3,7 @@ package com.example.tasbihcounter
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -32,6 +33,10 @@ class CounterActivity : AppCompatActivity() {
             itemDao.searchDataById(id).observe(this@CounterActivity) { itemModel ->
                 binding.apply {
                     title.text = itemModel.tasbihTitle
+                    title.setSingleLine()
+                    title.ellipsize = TextUtils.TruncateAt.MARQUEE
+                    title.marqueeRepeatLimit = -1
+                    title.isSelected = true
                     counterTv.text = itemModel.tasbihCount.toString()
                     dateTimeTv.text = itemModel.dateTime
                     switchBtn.isChecked = itemModel.isState

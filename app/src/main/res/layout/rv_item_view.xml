@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tootls="http://schemas.android.com/tools"
     app:cardCornerRadius="10dp"
     app:cardMaxElevation="3dp"
     app:cardElevation="3dp"
@@ -28,16 +29,27 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="5dp"
             android:ellipsize="end"
-            android:maxLines="3"
-            android:text="tasbih name"
+            android:maxLines="5"
+            tootls:text="tasbih name"
             android:textSize="18sp"
             android:textStyle="bold"
             android:theme="@style/Theme.TasbihCounter" />
+
+        <TextView
+            android:id="@+id/countTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tasbihTitleTv"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/total_counts"
+            android:theme="@style/Theme.CustomTextColor" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tasbihTitleTv"
+            android:layout_toEndOf="@+id/countTitle"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
             app:cardElevation="0dp"
@@ -47,7 +59,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:gravity="center">
 
@@ -61,7 +73,7 @@
                     android:paddingTop="5dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="5dp"
-                    android:text="Counts : 33"
+                    android:text="33"
                     android:theme="@style/Theme.CustomTextColor" />
 
             </LinearLayout>
@@ -78,7 +90,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="06-08-2022 08:00 PM"
+            android:text="06-08-2022 08:00:00 PM"
             android:theme="@style/Theme.TasbihCounter" />
 
 
