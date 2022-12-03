@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CounterActivity">
+    tools:context=".ui.activity.CounterActivity">
 
     <RelativeLayout
         android:id="@+id/topBarRl"
@@ -23,16 +23,8 @@
             android:text="@string/tasbih_count_list"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:theme="@style/Theme.TasbihCounter" />
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:background="#838383" />
+            android:theme="@style/CounterTvColor"
+            android:fontFamily="@font/li_alinur_prottoyoee"/>
 
     </RelativeLayout>
 
@@ -58,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Reset"
+            android:text="@string/reset"
             android:textSize="8sp"
             android:textStyle="bold"
             android:textColor="@color/white" />
@@ -73,8 +65,8 @@
         android:layout_centerHorizontal="true"
         android:checked="true"
         android:showText="true"
-        android:textOff="Plus"
-        android:textOn="Minus" />
+        android:textOff="@string/plus"
+        android:textOn="@string/minus" />
 
     <TextView
         android:id="@+id/switchTextTv"
@@ -83,8 +75,8 @@
         android:layout_above="@+id/displayCv"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:text="plus"
-        android:theme="@style/Theme.TasbihCounter" />
+        android:text="@string/add"
+        android:theme="@style/CounterTvColor" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/displayCv"
@@ -93,9 +85,9 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="5dp"
-        android:translationZ="5dp">
+        android:translationZ="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -111,9 +103,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="06-08-2022 08:00:00 PM"
                 android:paddingHorizontal="10dp"
-                android:theme="@style/Theme.TasbihCounter" />
+                android:text="06-08-2022 08:00:00 PM"
+                android:theme="@style/CounterTvColor" />
 
             <TextView
                 android:id="@+id/counterTv"
@@ -121,11 +113,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dateTimeTv"
                 android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-black"
                 android:text="0"
                 android:textSize="100dp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif-black"
-                android:theme="@style/Theme.TasbihCounter" />
+                android:theme="@style/CounterTvColor" />
 
 
         </RelativeLayout>

@@ -3,4 +3,10 @@
     <string name="tasbih_count_list">Tasbih Count List</string>
     <string name="no_tasbih_yet_nplease_add_new_tasbih_nby_pressing_the_plus_button">No Tasbih Yet!\n\nPlease add new tasbih\nby pressing the plus button.</string>
     <string name="total_counts">Total counts :</string>
+    <string name="plus">Plus</string>
+    <string name="minus">Minus</string>
+    <string name="reset">Reset</string>
+    <string name="add">Add</string>
+    <string name="subtract">Subtract</string>
+    <string name="todo">TODO</string>
 </resources>

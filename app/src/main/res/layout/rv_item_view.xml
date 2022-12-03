@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,7 +11,8 @@
     android:layout_marginStart="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp"
-    android:id="@+id/rootCv">
+    android:id="@+id/rootCv"
+    style="@style/Theme.TasbihCounter">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,17 +24,27 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
+            android:layout_toStartOf="@id/imgv_menu"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="5dp"
-            android:ellipsize="end"
-            android:maxLines="5"
             tootls:text="tasbih name"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:theme="@style/Theme.TasbihCounter" />
+            android:textSize="20sp"
+            android:theme="@style/CounterTvColor"
+            android:fontFamily="@font/li_alinur_prottoyoee"/>
+
+        <ImageView
+            android:id="@+id/imgv_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_three_dot"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:padding="8dp"
+            android:theme="@style/MenuThreeDotTheme"
+            android:background="@drawable/click_effect"
+            />
 
         <TextView
             android:id="@+id/countTitle"
@@ -43,7 +54,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:text="@string/total_counts"
-            android:theme="@style/Theme.CustomTextColor" />
+            android:theme="@style/CounterTvColor" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -54,7 +65,7 @@
             android:layout_marginBottom="10dp"
             app:cardElevation="0dp"
             app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="#BDFFBF">
+            android:theme="@style/CounterTvThemeBg">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -74,7 +85,7 @@
                     android:paddingEnd="10dp"
                     android:paddingBottom="5dp"
                     android:text="33"
-                    android:theme="@style/Theme.CustomTextColor" />
+                    android:theme="@style/CounterTvColor" />
 
             </LinearLayout>
 
@@ -87,14 +98,13 @@
             android:layout_below="@id/tasbihTitleTv"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:text="06-08-2022 08:00:00 PM"
-            android:theme="@style/Theme.TasbihCounter" />
-
+            android:theme="@style/CounterTvColor" />
 
     </RelativeLayout>
 
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

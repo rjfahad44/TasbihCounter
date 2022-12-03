@@ -4,35 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
     <RelativeLayout
         android:id="@+id/topBarRl"
         android:layout_width="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
         android:layout_height="?attr/actionBarSize">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="10dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:text="@string/tasbih_count_list"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:theme="@style/Theme.TasbihCounter" />
+            android:theme="@style/CounterTvColor" />
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
+
+        <ImageView
+            android:id="@+id/imgv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@drawable/ic_close"
+            android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/imgv_all_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@drawable/ic_deselect_all"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/tv_counter"
+            android:layout_marginHorizontal="20dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toStartOf="@id/imgv_delete"
+            android:text="0"
+            android:textSize="20sp"
+            android:theme="@style/Theme.TasbihCounter"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/imgv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@drawable/ic_delete"
+            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:background="#838383"/>
+            android:layout_marginEnd="20dp"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 
@@ -42,10 +83,13 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/topBarRl"
         tools:listitem="@layout/rv_item_view"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:visibility="gone"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addFloatingActionButton"
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/addExtFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -54,17 +98,22 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_add" />
+        android:text="Add New"
+        android:textColor="@color/white"
+        app:icon="@drawable/ic_add"
+        app:iconTint="@color/white"
+        app:maxImageSize="40dp"
+        android:theme="@style/ExpendableFloatingActionBtnTheme"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/emptyTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textAlignment="center"
         android:text="@string/no_tasbih_yet_nplease_add_new_tasbih_nby_pressing_the_plus_button"
+        android:textAlignment="center"
         android:textSize="18sp"
-        android:theme="@style/Theme.TasbihCounter"/>
+        android:theme="@style/CounterTvColor" />
 
 </RelativeLayout>
