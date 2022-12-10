@@ -15,7 +15,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:hint="Enter Tasbih Name"
+        android:hint="@string/enter_tasbih_name"
         android:textColorHint="@color/hint_text_color"
         app:boxBackgroundColor="@color/white"
         app:boxCornerRadiusBottomEnd="5dp"
@@ -23,7 +23,8 @@
         app:boxCornerRadiusTopEnd="5dp"
         app:boxCornerRadiusTopStart="5dp"
         app:boxStrokeColor="@color/black"
-        app:endIconMode="clear_text">
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/red">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tie_title"
@@ -35,10 +36,41 @@
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_title_details"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/til_title"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="20dp"
+        android:hint="@string/enter_tasbih_details"
+        android:textColorHint="@color/hint_text_color"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxStrokeColor="@color/black"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/red">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tie_title_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@color/text_color"
+            android:textCursorDrawable="@drawable/edit_text_cursor_color"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/til_title"
+        android:layout_below="@id/til_title_details"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:paddingHorizontal="20dp"

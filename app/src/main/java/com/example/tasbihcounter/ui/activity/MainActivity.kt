@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         }
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        rvAdapter = RvAdapter(this@MainActivity, this) { show, counter -> showDeleteMenu(show, counter) }
+        rvAdapter =
+            RvAdapter(this@MainActivity, this) { show, counter -> showDeleteMenu(show, counter) }
         binding.recyclerView.adapter = rvAdapter
 
         binding.imgvClose.setOnClickListener {
@@ -56,10 +57,10 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
 
         binding.imgvAllSelect.setOnClickListener {
             isAllSelectedState = !isAllSelectedState
-            if (isAllSelectedState){
+            if (isAllSelectedState) {
                 binding.imgvAllSelect.setImageResource(R.drawable.ic_select_all)
                 rvAdapter.selectedAll()
-            } else{
+            } else {
                 binding.imgvAllSelect.setImageResource(R.drawable.ic_deselect_all)
                 rvAdapter.unSelectedAll()
                 showDeleteMenu(true, 0)
@@ -92,31 +93,34 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         //bottomSheetDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val title = bottomSheetDialog.findViewById<TextInputEditText>(R.id.tie_title)
+        val details = bottomSheetDialog.findViewById<TextInputEditText>(R.id.tie_title_details)
         val hintText = bottomSheetDialog.findViewById<TextInputLayout>(R.id.til_title)
         val saveBtn = bottomSheetDialog.findViewById<Button>(R.id.btn_save)
         val cancelBtn = bottomSheetDialog.findViewById<Button>(R.id.btn_cancel)
 
         cancelBtn?.setOnClickListener { bottomSheetDialog.dismiss() }
 
-        if (tag.contains("Add")){
+        if (tag.contains("Add")) {
             saveBtn?.setOnClickListener {
                 viewModel.saveItem(
                     ItemModel(
-                        title?.text.toString(),
-                        0,
-                        true,
-                        false,
-                        AppUtils.getCurrentDateTime()
+                        tasbihTitle = title?.text.toString(),
+                        tasbihDetails = details?.text.toString(),
+                        tasbihCount = 0,
+                        isState = true,
+                        isSelectState = false,
+                        dateTime = AppUtils.getCurrentDateTime()
                     )
                 )
                 bottomSheetDialog.dismiss()
             }
-        }else if (tag.contains("Update")){
+        } else if (tag.contains("Update")) {
             saveBtn?.text = tag
             title?.setText(items?.tasbihTitle)
             hintText?.hint = "Update Tasbih Name"
             saveBtn?.setOnClickListener {
                 items?.tasbihTitle = title?.text.toString()
+                items?.tasbihDetails = details?.text.toString()
                 viewModel.updateItem(items!!)
                 bottomSheetDialog.dismiss()
             }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tootls="http://schemas.android.com/tools"
     app:cardCornerRadius="10dp"
     app:cardMaxElevation="3dp"
     app:cardElevation="3dp"
@@ -11,12 +11,13 @@
     android:layout_marginStart="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp"
-    android:id="@+id/rootCv"
-    style="@style/Theme.TasbihCounter">
+    android:id="@+id/rootCv">
 
     <RelativeLayout
+        android:id="@+id/rlContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        style="@style/CounterTvColor">
 
         <TextView
             android:id="@+id/tasbihTitleTv"
@@ -26,13 +27,29 @@
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@id/imgv_menu"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
+            android:paddingTop="2dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="8dp"
+            tools:text="ইয়া মুমিনু"
+            android:textSize="24sp"
+            android:theme="@style/CounterTvColor"
+            android:fontFamily="@font/sutonnymj_regular"/>
+
+        <TextView
+            android:id="@+id/tasbihDetailsTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tasbihTitleTv"
+            android:layout_marginStart="10dp"
+            android:paddingTop="2dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="5dp"
-            tootls:text="tasbih name"
-            android:textSize="20sp"
+            tools:text="ইয়া মুমিনু"
+            android:textSize="16sp"
             android:theme="@style/CounterTvColor"
-            android:fontFamily="@font/li_alinur_prottoyoee"/>
+            android:fontFamily="@font/sutonnymj_regular"/>
 
         <ImageView
             android:id="@+id/imgv_menu"
@@ -50,7 +67,7 @@
             android:id="@+id/countTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tasbihTitleTv"
+            android:layout_below="@id/tasbihDetailsTv"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:text="@string/total_counts"
@@ -59,7 +76,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tasbihTitleTv"
+            android:layout_below="@id/tasbihDetailsTv"
             android:layout_toEndOf="@+id/countTitle"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
@@ -84,7 +101,7 @@
                     android:paddingTop="5dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="5dp"
-                    android:text="33"
+                    tools:text="33"
                     android:theme="@style/CounterTvColor" />
 
             </LinearLayout>
@@ -95,7 +112,7 @@
             android:id="@+id/dateTimeTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tasbihTitleTv"
+            android:layout_below="@id/tasbihDetailsTv"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"

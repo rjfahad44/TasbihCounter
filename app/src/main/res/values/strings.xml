@@ -9,4 +9,6 @@
     <string name="add">Add</string>
     <string name="subtract">Subtract</string>
     <string name="todo">TODO</string>
+    <string name="enter_tasbih_details">Enter Tasbih Details</string>
+    <string name="enter_tasbih_name">Enter Tasbih Name</string>
 </resources>

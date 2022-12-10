@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "TasbihTable")
 data class ItemModel(
     @ColumnInfo(name = "tasbihTitle") var tasbihTitle: String,
+    @ColumnInfo(name = "tasbihDetails") var tasbihDetails: String,
     @ColumnInfo(name = "tasbihCount") var tasbihCount: Int,
     @ColumnInfo(name = "isState") var isState: Boolean,
     @ColumnInfo(name = "isSelectState") var isSelectState: Boolean,

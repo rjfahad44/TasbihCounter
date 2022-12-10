@@ -1,16 +1,10 @@
 package com.example.tasbihcounter.data.adapter
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -34,40 +28,44 @@ class RvAdapter(
     private var isSelectedAll = false
     private var selectedItems = mutableListOf<Int>()
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(RvItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(
+            RvItemViewBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         viewModel = ViewModelProvider(context as MainActivity)[AppViewModel::class.java]
         holder.binding.tasbihTitleTv.text = itemList[position].tasbihTitle
+        holder.binding.tasbihDetailsTv.text = itemList[position].tasbihDetails
         holder.binding.tasbihCounterTv.text = itemList[position].tasbihCount.toString()
         holder.binding.dateTimeTv.text = itemList[position].dateTime
 
-        if (!isSelected){
-            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO){
-                holder.binding.rootCv.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
-            }else{
-                holder.binding.rootCv.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.black700))
-            }
+        if (!isSelected) {
+            holder.binding.rlContainer.setBackgroundResource(android.R.color.transparent)
         }
 
-        if (isSelectedAll){
+        if (isSelectedAll) {
             selectedItems.add(position)
             itemList[position].isSelectState = true
             showDeleteMenu(true, selectedItems.size)
-            holder.binding.rootCv.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.green))
+            holder.binding.rootCv.setCardBackgroundColor(
+                ContextCompat.getColor(
+                    holder.itemView.context,
+                    R.color.green
+                )
+            )
         }
 
         holder.itemView.setOnClickListener {
             if (selectedItems.contains(position)) {
                 selectedItems.removeAt(selectedItems.indexOf(position))
-                //holder.binding.rootCv.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
-                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO){
-                    holder.binding.rootCv.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
-                }else{
-                    holder.binding.rootCv.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.black700))
-                }
+                holder.binding.rlContainer.setBackgroundResource(android.R.color.transparent)
                 itemList[position].isSelectState = false
                 showDeleteMenu(true, selectedItems.size)
                 if (selectedItems.isEmpty()) {
@@ -80,6 +78,7 @@ class RvAdapter(
                 val intent = Intent(context, CounterActivity::class.java)
                 intent.putExtra("id", itemList[position].id)
                 intent.putExtra("title", itemList[position].tasbihTitle)
+                intent.putExtra("title_details", itemList[position].tasbihDetails)
                 context.startActivity(intent)
             }
         }
@@ -95,12 +94,16 @@ class RvAdapter(
 
     }
 
-    private fun selectMultipleItem(holder: RvAdapter.ViewHolder, itemModel: ItemModel, position: Int) {
+    private fun selectMultipleItem(
+        holder: RvAdapter.ViewHolder,
+        itemModel: ItemModel,
+        position: Int
+    ) {
         isSelected = true
         selectedItems.add(position)
         itemModel.isSelectState = true
         showDeleteMenu(true, selectedItems.size)
-        holder.binding.rootCv.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.green))
+        holder.binding.rlContainer.setBackgroundResource(R.color.green)
     }
 
     override fun getItemCount(): Int = itemList.size
@@ -113,6 +116,7 @@ class RvAdapter(
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun unSelectedAll() {
         isSelected = false
         isSelectedAll = false
@@ -120,6 +124,7 @@ class RvAdapter(
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun selectedAll() {
         isSelected = true
         isSelectedAll = true
@@ -132,7 +137,7 @@ class RvAdapter(
         if (selectedItems.isNotEmpty()) {
             //itemList.removeAll { items -> items.isSelectState }
             itemList.forEach {
-                if (it.isSelectState){
+                if (it.isSelectState) {
                     viewModel.deleteItem(it)
                 }
             }
